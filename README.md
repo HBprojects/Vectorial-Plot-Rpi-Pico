@@ -1,4 +1,4 @@
-# Vectorial-Plot-Rpi-Pico
+# Vectorial Reconstruction of an Electric Dipole in Saline Solution
 This project implements a minimal analog front-end and software reconstruction algorithm to track a dipole vector immersed in saline solution. Drawing from the **Einthoven triangle** and its bipolar leads, maps electric potential to a real-time vectorial representation, similar how ECG devices take cardiac signals.
 ![Alt text](images/End_system.gif)
 ## 1. Motivation and context
@@ -120,4 +120,10 @@ Noise sensitivity	Dominated by reference stability
 - INA128 is not rail-to-rail amplifier.
 - Requires careful reference grounding
 Adding DC-DC converter before the polarization electrodes and a precision voltage reference improves the noise reduction the K64F firmware includes 60Hz Notch filter.
-
+##8. Next Steps
+The second part of this project consists of:
+Python host-side excecutable code.
+Bioamplified version.
+Zero correction and central terminal software.
+This will be documented separately.
+##9. Authors
