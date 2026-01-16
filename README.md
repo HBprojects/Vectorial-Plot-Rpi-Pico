@@ -98,6 +98,35 @@ Raspberry Pi Pico:
 K64F: 
 0.01234, -0.01022,1.81200,0.02545,0.78459,0.89156,0.84100
 ```
+### 5.4 Demo signal program.
+The program continuously streams a previously recorded ECG signal to the host graphical application through a USB serial port, this lets test the firmware and the host program very fast.
+```python
+# --- Parameters ---
+SCALE_FACTOR = 0.000435 #This value converts the table values to mS
+TARGET_POINTS = 680 #Adjust the time scale, 
+```
+The **target points** parameter keeps the ECG signal within a normal scale, typically ranging between 600 and 700 points. This is because the table contains a fixed number of points, which must be adapted to the amount of data that can be effectively represented graphically.
+Image
+### 5.5 Animation Speed vs. Time Scale
+The delay time parameter allows you to slow down the signal animation to observe vector behavior more clearly.
+- **Animation Speed:** Adjusting the delay does not change the actual time scale of the signal.
+- **Accuracy:** For example, if a signal period is 0.75s, the scale will always display 0.75s regardless of the animation speed. This ensures that any captured or "printed" signal maintains its physical temporal accuracy.
+```python
+# --- Parameter ---
+# Adjust this value (e.g., between 5-50) to slow the animation
+utime.sleep_ms(5)
+``` 
+### 5.6 Getting Started
+- Flash the Pico: Use Thonny to upload the demo_signal_pico.py sketch to your Raspberry Pi Pico.
+- Configure the Host: Open the host script vecto_graph.py in a text editor and update the serial port number to match your Raspberry Pi Pico’s port.
+- Updating Parameters: To apply new changes to the Pico, close the host program, update the code, and re-upload the sketch to the board.
+### 5.7. Interacting with the Graph
+- **Pause:** Press the "P" key while the signal is running to pause the animation.
+- **Inspection:** Move your mouse over the signal profile. A crosshair will track your pointer, and the vector graph will update dynamically to reflect the values at that specific point.
+- **Measurement:** Click anywhere on the three signals to set a reference point.
+ - The bottom-right corner of the screen will display two numerical values.
+ - Click a second time at a different location to calculate the amplitude and time lapse (Δt) between the two selected points.
+
 ## 6. Host-Side Visualization (Python)
 ### 6.1 Features
 - High-baud serial acquisition and circular buffering for real-time plotting.
@@ -131,6 +160,6 @@ Bioamplified version.
 Zero correction and central terminal software.
 This will be documented separately.
 ## 10. Authors
-Profesor William Ricardo Rodríguez PhD.
-Profesor Diana Patricia Amador PhD.
-Hernan Bernal Mechanical Designer.
+- Profesor William Ricardo Rodríguez PhD.
+- Profesor Diana Patricia Amador PhD.
+- Hernan Bernal Mechanical Designer.
