@@ -2,7 +2,7 @@
 This project implements a minimal analog front-end and software reconstruction algorithm to track a dipole vector immersed in saline solution. Drawing from the **Einthoven triangle** and its bipolar leads, maps electric potential to a real-time vectorial representation, similar how ECG devices take cardiac signals.
 <p align="center">
   <img width="35%" src="https://github.com/HBprojects/Vectorial-Plot-Rpi-Pico/blob/main/images/End_system.gif">
-</p>
+  
 ## 1. Motivation and context
 The conduction and acquisition of biopotentials are non-observable phenomena, mastering these concepts typically requires a deep dive into abstract physiological theory. This project provides a tangible, real-time bridge between theory and practice.
 By measuring potential differences induced by a hand probe within a conductive saline medium, this software calculates and graphically reconstructs a single dipole orientation and magnitude in real time. This approach transforms invisible electrical fields into an intuitive visual format.
