@@ -24,13 +24,13 @@ While high-performance differential ADCs or microcontrollers like the NXP K64F a
 project/
 │
 ├── firmware/
-│   └── Vecto_pico.py                                        # Micropython program for Raspberry Pi Pico
-│   └── demo_signal_pico.py		    #Fast test of Pico board and graph program
-│   └── VECTO2_MK64F12_Project.hex    # Binary file for FRDM K64F board
+│   └── Vecto_pico.py              # Micropython program for Raspberry Pi Pico
+│   └── demo_signal_pico.py		     #Fast test of Pico board and graph program
+│   └── VECTO2_MK64F12_Project.hex # Binary file for FRDM K64F board
 ├── images/	
-├── kicad/				    # Circuit files
+├── kicad/				                 # Circuit files
 ├── software/
-│   └── vecto_graph.py		 	   # Real-time plotting via Python and Matplotlib
+│   └── vecto_graph.py		 	       # Real-time plotting via Python and Matplotlib
 └── README.md
 ```
 ## 4. Implementation Architecture
@@ -85,7 +85,8 @@ GAIN = 2.6 #The analog gain in the instrumentation amplifier.
 ```
 - Analog and digital supplies are isolated except for a **shared reference point**
 - Very high input impedance → suitable for **low-power sensors**
-
+- To change the signal register speed, press ‘m’ in the keyboard in the graphic program.
+- The time scale is the same, that allows to draw waveforms more easy, for example a wave of 100mS period can be draw in 1S.
 ### 5.3 Data Output Format
 Each serial line contains three comma-separated floating-point values: 
 Raspberry Pi Pico: DI, DII, DIII.
@@ -130,6 +131,6 @@ Bioamplified version.
 Zero correction and central terminal software.
 This will be documented separately.
 ## 10. Authors
-Profesor William Ricardo Rodríguez PhD
-Profesor Diana Patricia Amador PhD
-Hernan Bernal Mechanical Designer
+Profesor William Ricardo Rodríguez PhD.
+Profesor Diana Patricia Amador PhD.
+Hernan Bernal Mechanical Designer.
