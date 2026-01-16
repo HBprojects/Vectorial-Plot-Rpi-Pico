@@ -1,6 +1,8 @@
 # Vectorial Reconstruction of an Electric Dipole in Saline Solution
 This project implements a minimal analog front-end and software reconstruction algorithm to track a dipole vector immersed in saline solution. Drawing from the **Einthoven triangle** and its bipolar leads, maps electric potential to a real-time vectorial representation, similar how ECG devices take cardiac signals.
-![Alt text](images/End_system.gif)
+<p align="center">
+  <img src="https://github.com/HBprojects/Vectorial-Plot-Rpi-Pico/blob/main/images/End_system.gif?raw=true" alt="final system"/>
+</p>
 ## 1. Motivation and context
 The conduction and acquisition of biopotentials are non-observable phenomena, mastering these concepts typically requires a deep dive into abstract physiological theory. This project provides a tangible, real-time bridge between theory and practice.
 By measuring potential differences induced by a hand probe within a conductive saline medium, this software calculates and graphically reconstructs a single dipole orientation and magnitude in real time. This approach transforms invisible electrical fields into an intuitive visual format.
@@ -25,7 +27,8 @@ project/
 │   └── Vecto_pico.py                                        # Micropython program for Raspberry Pi Pico
 │   └── demo_signal_pico.py		    #Fast test of Pico board and graph program
 │   └── VECTO2_MK64F12_Project.hex    # Binary file for FRDM K64F board
-├──kicad/				    # Circuit files
+├── images/	
+├── kicad/				    # Circuit files
 ├── software/
 │   └── vecto_graph.py		 	   # Real-time plotting via Python and Matplotlib
 └── README.md
@@ -41,7 +44,7 @@ The following components are required to replicate the experimental setup:
 |:---:|:-----------|:-----------|
 |2| INA128 instrumentation amplifiers |
 |1| Raspberry Pi Pico V2 | 
-|12| Resistors (1% preferred) | See schematic down below 
+|12| Resistors (1% preferred) | See schematic
 |4| Decoupling and filtering capacitors |
 |1| Isolated 5V Lab power supply | Also tested with SWM12-5-N adapter |
 |1| 1X Oscilloscope probe | Also tested with a wire with 300 ohm series resistor |
@@ -57,9 +60,7 @@ The following components are required to replicate the experimental setup:
 This architecture minimizes ground loops and digital noise injection and centers ADC measurements.
 ### 4.3 Gain Configuration
 INA128 gain is defined by:
-\[
-G = 1 + \frac{50\,k\Omega}{R_G}
-\]
+$G = 1 + 50kΩ/R_G$
 Current implementation:
 - Gain ≈ **2.6**
 - Optimized for ±0.3 V input signals
@@ -89,11 +90,13 @@ GAIN = 2.6 #The analog gain in the instrumentation amplifier.
 Each serial line contains three comma-separated floating-point values: 
 Raspberry Pi Pico: DI, DII, DIII.
 K64F: DI, DII, DIII,Calculated AvR, Calculated AvF, Calculated AvL, Sample_time (mS).
+```text
 Example:
 Raspberry Pi Pico: 
 0.01234, -0.01022,1.81200
 K64F: 
 0.01234, -0.01022,1.81200,0.02545,0.78459,0.89156,0.84100
+```
 ## 6. Host-Side Visualization (Python)
 ### 6.1 Features
 - High-baud serial acquisition and circular buffering for real-time plotting.
@@ -127,3 +130,6 @@ Bioamplified version.
 Zero correction and central terminal software.
 This will be documented separately.
 ## 10. Authors
+Profesor William Ricardo Rodríguez PhD
+Profesor Diana Patricia Amador PhD
+Hernan Bernal Mechanical Designer
