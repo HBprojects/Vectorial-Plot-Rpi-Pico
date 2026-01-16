@@ -106,7 +106,7 @@ SCALE_FACTOR = 0.000435 #This value converts the table values to mS
 TARGET_POINTS = 680 #Adjust the time scale, 
 ```
 The **target points** parameter keeps the ECG signal within a normal scale, typically ranging between 600 and 700 points. This is because the table contains a fixed number of points, which must be adapted to the amount of data that can be effectively represented graphically.
-Image
+![Alt text](images/host1.png)
 ### 5.5 Animation Speed vs. Time Scale
 The delay time parameter allows you to slow down the signal animation to observe vector behavior more clearly.
 - **Animation Speed:** Adjusting the delay does not change the actual time scale of the signal.
@@ -120,6 +120,7 @@ utime.sleep_ms(5)
 - Flash the Pico: Use Thonny to upload the demo_signal_pico.py sketch to your Raspberry Pi Pico.
 - Configure the Host: Open the host script vecto_graph.py in a text editor and update the serial port number to match your Raspberry Pi Pico’s port.
 - Updating Parameters: To apply new changes to the Pico, close the host program, update the code, and re-upload the sketch to the board.
+![Alt text](images/host2.png)
 ### 5.7. Interacting with the Graph
 - **Pause:** Press the "P" key while the signal is running to pause the animation.
 - **Inspection:** Move your mouse over the signal profile. A crosshair will track your pointer, and the vector graph will update dynamically to reflect the values at that specific point.
