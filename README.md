@@ -9,16 +9,15 @@ By measuring potential differences induced by a hand probe within a conductive s
 ## 2. System Overview
 The physical setup mimics a standard **three-lead frontal plane EKG configuration** (RA, LA, LL) within a controlled environment.
 ### 2.1 Physical Configuration
--**The Medium:** A 500mL container filled with a 0.9% saline solution or a salt-water mixture.
--**The Electrodes:** Three terminal electrodes, which can be made from peeled wire, are placed in an equilateral triangle around the perimeter of the container.
-**Peripheral Spacing:** Peripheral electrodes are ideally separated by 120 to 150 mm.
+- **The Medium:** A 500mL container filled with a 0.9% saline solution or a salt-water mixture.
+- **The Electrodes:** Three terminal electrodes, which can be made from peeled wire, are placed in an equilateral triangle around the perimeter of the container.
+- **Peripheral Spacing:** Peripheral electrodes are ideally separated by 120 to 150 mm.
 ### 2.2 The Dipole Source
 - **Anode:** A wire is placed at the center of the container with a small exposed portion. This allows the system to show positive and negative voltages at the center of the projection lines.
 - **Cathode (Probe):** An oscilloscope probe serves as the hand movable electrode. A wire with a 300Ω series resistor can also be used for testing.
 - **Power:** The system is powered with 5V DC relative to the central terminal. This configuration is specifically chosen to minimize cathode corrosion within the electrolytic solution.
 ### 2.3 Data Acquisition & Processing
 While high-performance differential ADCs or microcontrollers like the NXP K64F are recommended for precision, this repository provides a setup for easy testing using a Raspberry Pi Pico. The signal is pre-amplified by instrumentation amplifiers, biased at mid-supply, and processed in software to remove offset and gain before being streamed as comma-separated numeric values for real-time plotting.
-![Alt text](images/pool_cmplt.png)
 ## 3. Repository Structure
 ```text
 project/
@@ -52,7 +51,7 @@ The following components are required to replicate the experimental setup:
 |1| Low profile plastic container | Peripheral electrodes separated between 120 to 150 mm|
 ---
 ### 4.2 Power Domains & Grounding
- -**Analog Domain**: INA128 powered from an **isolated 5V source**, Two operational amplifiers couple the LI and LII signals, by the Kirchoff’s voltage law LI+LIII=LII, which allows the system to calculate LIII, However the measurement of the third value allows the system to reduce the zero error.
+ - **Analog Domain**: INA128 powered from an **isolated 5V source**, Two operational amplifiers couple the LI and LII signals, by the Kirchoff’s voltage law LI+LIII=LII, which allows the system to calculate LIII, However the measurement of the third value allows the system to reduce the zero error.
  - **Digital domain**: Pico powered from USB- Improves noise immunity
  - **Reference coupling**: Single-point connection between:
  - INA128 `REF`5 V mid-voltage 
@@ -99,7 +98,7 @@ K64F:
 0.01234, -0.01022,1.81200,0.02545,0.78459,0.89156,0.84100
 ```
 ### 5.4 Demo signal program.
-The program continuously streams a previously recorded ECG signal to the host graphical application through a USB serial port, this lets test the firmware and the host program very fast.
+The program continuously streams a previously recorded ECG signal to the host graphical application through a USB serial port, allowing the firmware and host program to be tested without difficulty.
 ```python
 # --- Parameters ---
 SCALE_FACTOR = 0.000435 #This value converts the table values to mS
@@ -161,6 +160,6 @@ Bioamplified version.
 Zero correction and central terminal software.
 This will be documented separately.
 ## 10. Authors
-- Profesor William Ricardo Rodríguez PhD.
 - Profesor Diana Patricia Amador PhD.
+- Profesor William Ricardo Rodríguez PhD.
 - Hernan Bernal Mechanical Designer.
