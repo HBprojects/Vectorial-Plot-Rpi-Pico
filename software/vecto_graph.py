@@ -481,7 +481,7 @@ def read_serial_data():
         idx += 1
         try:
             values = data.split(',')
-            if len(values) > 4: #> 4:#4 for k64f
+            if len(values) == 3: #> 4:#4 for k64f
                 value1 = float(values[0])
                 value2 = float(values[1])
                 value3 = float(values[2])
@@ -794,4 +794,5 @@ ani = animation.FuncAnimation(
 if __name__ == "__main__":
     plt.show()
 # Don't forget to close the serial connection after use
+
 ser.close()
