@@ -24,12 +24,12 @@ project/
 │
 ├── firmware/
 │   └── Vecto_pico.py              # Micropython program for Raspberry Pi Pico
-│   └── demo_signal_pico.py		     #Fast test of Pico board and graph program
+│   └── demo_signal_pico.py		   #Fast test of Pico board and graph program
 │   └── VECTO2_MK64F12_Project.hex # Binary file for FRDM K64F board
 ├── images/	
-├── kicad/				                 # Circuit files
+├── kicad/				             # Circuit files
 ├── software/
-│   └── vecto_graph.py		 	       # Real-time plotting via Python and Matplotlib
+│   └── vecto_graph.py		 	    # Real-time plotting via Python and Matplotlib
 └── README.md
 ```
 ## 4. Implementation Architecture
