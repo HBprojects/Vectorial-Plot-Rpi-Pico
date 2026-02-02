@@ -21,8 +21,8 @@ Examples:
 ### 2.2 Expected ADC Channels (Firmware Match)
 Inside read_serial_data() (≈ line 484):
 if len(values) == 3:
-•	Raspberry Pi Pico firmware → == 3
-•	K64F firmware → replace with > 4
+-	Raspberry Pi Pico firmware → == 3
+-	K64F firmware → replace with > 4
 This must match the firmware output, or data parsing will fail.
 ## 3. Keyboard Controls (Core Usage)
 | Key | Action | Notes |
@@ -45,7 +45,16 @@ Handles all user interaction:
 -	Enables data scrolling
 -	Extracts, scales, and saves 3-channel data to .npy
 This function defines how the user operates the software.
-## 5. Non-Critical Functions (1-Line Explanation)
+## 5. Typical Workflow
+-	Set serial port
+-	Connect microcontroller
+-	Run the script
+- Press p to pause
+- Scroll and inspect data
+- Press j to save
+- Press p to continue in real time mode
+- Press d to stream the demo signal (firmware)
+## 6. Performance Functions
 -	init() – Initializes figures, axes, buffers, and event handlers.
 -	format_func() – Formats axis tick labels.
 -	update_xspeed() – Changes plot scrolling speed.
@@ -56,21 +65,12 @@ This function defines how the user operates the software.
 -	calc_heart_vector() – Computes vector representation from 3 channels.
 -	calc_per_points() – Computes values at a specific cursor position.
 -	update_axs() – Updates plots during animation frames.
-## 6. Data Output
+## 7. Data Output
 Saved File
 -	seem_ath20.npy. "seem_ath20" change the name as needed  in program line 352
 -	Shape: (1500, 3) by default
 - Columns: Channel 1, Channel 2, Channel 3
 Saved when pausing (p) then (j).
-## 7. Typical Workflow
--	Set serial port
--	Connect microcontroller
--	Run the script
-- Press p to pause
-- Scroll and inspect data
-- Press j to save
-- Press p to continue in real time mode
-- Press d to stream the demo signal (firmware)
 ## 8. Notes
 •	Assumes synchronized multi-channel data
 •	Timing depends on firmware sampling
