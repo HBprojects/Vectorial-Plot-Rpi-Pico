@@ -1,5 +1,5 @@
 # Vectorial Reconstruction of an Electric Hearth Vector in Saline Solution
-This project implements a minimal analog front-end and software reconstruction algorithm to track a dipole vector immersed in saline solution. Drawing from the **Einthoven triangle** and its bipolar leads, maps electric potential to a real-time vectorial representation, similar how ECG devices take cardiac signals.
+This project implements a minimal analog front-end and software reconstruction algorithm to track a dipole vector immersed in saline solution. Drawing from the Einthoven triangle and its bipolar leads, maps electric potential to a real-time vectorial representation, similar how ECG devices take cardiac signals.
 <p align="center">
   <img width="35%" src="https://github.com/HBprojects/Vectorial-Plot-Rpi-Pico/blob/main/images/End_system.gif">
   
@@ -38,18 +38,33 @@ The system is designed to provide high-fidelity signal acquisition while maintai
 - **Digitization;** The Raspberry Pi Pico ADC serves as a digitizer. A more reliable and precise version using the NXP K64F microcontroller.
 - **Visualization;** A Python sketch allows for interaction with the circuit and real-time signal plotting.
 ### 4.1 Components
-The following components are required to replicate the experimental setup:
+The following components are required to replicate the basic experimental setup:
 | Qty | Component | Notes |
 |:---:|:-----------|:-----------|
-|2| INA128 instrumentation amplifiers |
+|2| INA128 instrumentation amplifiers | See schematic |
 |1| Raspberry Pi Pico V2 | 
-|12| Resistors (1% preferred) | See schematic
-|4| Decoupling and filtering capacitors |
+|12| Resistors (1% preferred) | See schematic |
+|4| Decoupling and filtering capacitors | See schematic |
 |1| Isolated 5V Lab power supply | Also tested with SWM12-5-N adapter |
 |1| 1X Oscilloscope probe | Also tested with a wire with 300 ohm series resistor |
 |1| 500mL 0.9% saline solution | Also tested with salt-water mixture |
 |1| Low profile plastic container | Peripheral electrodes separated between 120 to 150 mm|
 ---
+![Alt text](images/circuit.png)
+The following components are required to replicate the improved performance setup version based on (FRDM K64F board):
+| Qty | Component | Notes |
+|:---:|:-----------|:-----------|
+|1| MAX6018 | Voltage reference | See schematic |
+|1| MAX4053 | Multiplexer | See schematic |
+|1| K64F Microcontroller | FRDM K64F Board |
+|-| Decoupling and filtering capacitors | See schematic |
+|1| power supply | SWM12-5-N adapter |
+|1| ITX0505SA | DC-DC Converter |
+|1| 1X Oscilloscope probe | Also tested with a wire with 300 ohm series resistor |
+|1| 500mL 0.9% saline solution | Also tested with salt-water mixture |
+|1| Acrylic plastic container | Peripheral electrodes separated between 120 to 150 mm|
+---
+![Alt text](images/K64F_schematic.png)
 ### 4.2 Power Domains & Grounding
  - **Analog Domain**: INA128 powered from an **isolated 5V source**, Two operational amplifiers couple the LI and LII signals, by the Kirchoff’s voltage law LI+LIII=LII, which allows the system to calculate LIII, However the measurement of the third value allows the system to reduce the zero error.
  - **Digital domain**: Pico powered from USB- Improves noise immunity
@@ -64,7 +79,6 @@ Current implementation:
 - Gain ≈ **2.6**
 - Optimized for ±0.3 V input signals
 - Ensures ADC full-scale utilization without saturation
-![Alt text](images/circuit.png)
 ## 5. Firmware (Raspberry Pi Pico_MicroPython, hex file for K64F)
 Two independent programs facilitate the implementation of the system.
 - **vecto_pico.py** Streams three values ( LI. LII, LIII) obtained by the ADC.
